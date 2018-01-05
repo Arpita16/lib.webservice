@@ -1,4 +1,4 @@
-package lexicon;
+package model;
 
 import java.util.Date;
 

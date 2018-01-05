@@ -1,4 +1,4 @@
-package lexicon;
+package resources;
 
 
 import java.net.URI;
@@ -16,6 +16,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import dao.MemberEJB;
+import model.Member;
 
 @Path("/member")
 @RequestScoped
