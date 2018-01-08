@@ -21,7 +21,6 @@ public class Books {
 	public Books() {}
 	
 	public Books(String title, String genre, int shelfNo, int numberOfcopies) {
-		super();
 		this.title = title;
 		this.genre = genre;
 		this.shelfNo = shelfNo;
