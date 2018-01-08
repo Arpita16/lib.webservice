@@ -17,7 +17,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import dao.MemberEJB;
+import daoInterface.MemberEjbInt;
 import model.Member;
 
 @Path("/member")
@@ -25,7 +25,7 @@ import model.Member;
 public class MemberRest {
 	
 	@Inject
-	MemberEJB memberService;
+	MemberEjbInt memberService;
 	
 	
 	@GET

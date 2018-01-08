@@ -6,40 +6,51 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import daoInterface.LoanEjbInt;
 import model.Loan;
 
 @Stateless
-public class LoanEJB {
+public class LoanEJB implements LoanEjbInt {
 
-	
+
 	@Inject
 	EntityManager em;
-	
-	 public void create(Loan loanItem) {
-	       em.persist(loanItem);
-	    }
-	 public void delete(Loan loanItem) {
-	        em.remove(loanItem);
-	    }
 
-	    public void update(Loan loanItem) {
-	        em.merge(loanItem);
-	    }
+	@Override
+	public void create(Loan loanItem) {
+		em.persist(loanItem);
+	}
 
-	
-	    public Loan findById(Long id) {
-	        return em.find(Loan.class, id);
-	    }
+	@Override
+	public void delete(Loan loanItem) {
+		em.remove(loanItem);
+	}
 
-	
-	    public List<Loan> findByLoan(Loan loan) {
-	        return em.createQuery("SELECT l FROM LoanItem l WHERE l.loan = :loanid", Loan.class)
-	                                                                    .setParameter("loanid", loan)
-	                                                                    .getResultList();
-	    }
 
-	   
-	    public List<Loan> findAll() {
-	        return em.createQuery("select l from LoanItem l", Loan.class).getResultList();
-	    }
+	@Override
+	public void update(Loan loanItem) {
+		em.merge(loanItem);
+	}
+
+
+
+	@Override
+	public Loan findById(Long id) {
+		return em.find(Loan.class, id);
+	}
+
+
+
+	@Override
+	public List<Loan> findByLoan(Loan loan) {
+		return em.createQuery("SELECT l FROM LoanItem l WHERE l.loan = :loanid", Loan.class)
+				.setParameter("loanid", loan)
+				.getResultList();
+	}
+
+
+	@Override
+	public List<Loan> findAll() {
+		return em.createQuery("select l from LoanItem l", Loan.class).getResultList();
+	}
 }

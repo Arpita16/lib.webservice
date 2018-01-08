@@ -7,20 +7,24 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import daoInterface.BooksEjbInt;
 import model.Books;
 
 @Stateless
-public class BooksEJB {
+public class BooksEJB implements BooksEjbInt {
 
 	@Inject
 	EntityManager em;
 
+	
+	@Override
 	public void createbook(Books book) {
 		em.persist(book);
 	}
 
 
 
+	@Override
 	public List<Books> listBooks() {
 
 		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b", Books.class);
@@ -30,6 +34,8 @@ public class BooksEJB {
 
 
 
+	
+	@Override
 	public List<Books> searchByTitle(String title) {
 
 		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.title= :replace", Books.class);
@@ -40,6 +46,7 @@ public class BooksEJB {
 	}
 
 
+	@Override
 	public Books updateById(long ISBN) {
 		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.title= :update", Books.class);
 		query.setParameter("update",ISBN );
@@ -50,6 +57,8 @@ public class BooksEJB {
 
 	}
 
+	
+	@Override
 	public Books findById(Long id) {
 		return em.find(Books.class, id);
 	}
