@@ -25,11 +25,11 @@ public class Member{
 	long PhoneNo;
 	String email;
 	
-	@OneToMany(cascade=CascadeType.ALL , fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")
 	private List<Books>book;
 	
-	@OneToMany(cascade=CascadeType.ALL , fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")
 	private List<Loan>loan;
 	

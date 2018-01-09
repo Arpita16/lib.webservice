@@ -40,7 +40,7 @@ public class BooksRest {
 		@Consumes(MediaType.APPLICATION_JSON)
 		public Response createBooks(Books books) throws URISyntaxException {
 			booksService.createbook(books);
-			return Response.created(new URI("localhost:8080/jboss-javaee-webapp/rest/books")).build();
+			return Response.created(new URI("localhost:8080/lib.webservice/rest/books")).build();
 		}
 		
 		@GET
