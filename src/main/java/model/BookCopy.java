@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.print.Book;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

@@ -38,7 +38,7 @@ public class MemberRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createMember(Member member) throws URISyntaxException {
 		memberService.createMember(member);
-		return Response.created(new URI("localhost:8080/lib.webservice/rest/member")).build();
+		return Response.created(new URI("localhost:8080/webservice/rest/member")).build();
 	}
 	
 //	@GET
