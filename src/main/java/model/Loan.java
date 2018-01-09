@@ -21,7 +21,9 @@ public class Loan {
 	
 	Date startdate;
 	Date endDate;
-	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="book_ID")
+	private Books book;
 	
 	public Loan() {}
 	
