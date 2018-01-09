@@ -19,9 +19,6 @@ import javax.ws.rs.core.Response;
 import daoInterface.BooksEjbInt;
 import model.Books;
 
-public class BooksRest {
-	
-	
 	@Path("/books")
 	@RequestScoped
 	public class BookRest {
@@ -40,7 +37,7 @@ public class BooksRest {
 		@Consumes(MediaType.APPLICATION_JSON)
 		public Response createBooks(Books books) throws URISyntaxException {
 			booksService.createbook(books);
-			return Response.created(new URI("localhost:8080/lib.webservice/rest/books")).build();
+			return Response.created(new URI("localhost:8080/webservice/rest/books")).build();
 		}
 		
 		@GET
@@ -60,7 +57,6 @@ public class BooksRest {
 			
 		}
 	}
-}
 		
 
 	

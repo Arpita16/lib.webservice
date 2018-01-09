@@ -1,15 +1,9 @@
 package model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 
 @Entity
@@ -27,9 +21,9 @@ public class Books {
 		
 	public Books() {}
 	
-	public Books(String title, String genre, int shelfNo, int numberOfcopies) {
+	public Books(String title, String gener, int shelfNo, int numberOfcopies) {
 		this.title = title;
-		this.genre = genre;
+		this.genre = gener;
 		this.shelfNo = shelfNo;
 		this.numberOfcopies = numberOfcopies;
 	}
@@ -64,8 +58,8 @@ public int getNumberOfcopies() {
 		return genre;
 	}
 
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setGenre(String gener) {
+		this.genre = gener;
 	}
 
 	public int getShelfNo() {
