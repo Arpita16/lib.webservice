@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,20 +23,36 @@ public class Books {
 	
 	String title;
 	String genre;
+	private String author;
+
 	int shelfNo;
 	int numberOfcopies;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="loan_ID")
 	private Loan loan;
+	
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="Member_ID")
+    private List<BookCopy> bookCopies;
 		
+	
 	public Books() {}
 	
-	public Books(String title, String gener, int shelfNo, int numberOfcopies) {
+	
+
+public Books(long iSBN, String title, String genre, String author, int shelfNo, int numberOfcopies, Loan loan,
+			List<BookCopy> bookCopies) {
+		
+		ISBN = iSBN;
 		this.title = title;
-		this.genre = gener;
+		this.genre = genre;
+		this.author = author;
 		this.shelfNo = shelfNo;
 		this.numberOfcopies = numberOfcopies;
+		this.loan = loan;
+		this.bookCopies = bookCopies;
 	}
+
 
 
 public int getNumberOfcopies() {
@@ -80,6 +97,29 @@ public int getNumberOfcopies() {
 	}
 
 	
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public Loan getLoan() {
+		return loan;
+	}
+
+	public void setLoan(Loan loan) {
+		this.loan = loan;
+	}
+
+	public List<BookCopy> getBookCopies() {
+		return bookCopies;
+	}
+
+	public void setBookCopies(List<BookCopy> bookCopies) {
+		this.bookCopies = bookCopies;
+	}
 
 
 
