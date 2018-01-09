@@ -17,7 +17,7 @@ public class Loan {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int loanId;
+	long loanId;
 	
 	Date startdate;
 	Date endDate;
@@ -37,7 +37,7 @@ public class Loan {
 
 
 
-	public int getLoanId() {
+	public long getLoanId() {
 		return loanId;
 	}
 
