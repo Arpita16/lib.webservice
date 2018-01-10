@@ -15,7 +15,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import dao.LoanEJB;
 import daoInterface.LoanEjbInt;
 import model.Loan;
 

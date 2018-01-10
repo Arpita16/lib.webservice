@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import daoInterface.LoanEjbInt;
-import model.Books;
 import model.Loan;
 
 @Stateless
