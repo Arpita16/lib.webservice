@@ -47,10 +47,13 @@ public class BooksEJB implements BooksEjbInt {
 
 
 	@Override
-	public Books updateById(long ISBN) {
-		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.title= :update", Books.class);
-		query.setParameter("update",ISBN );
-		Books books  = query.getSingleResult();
+	public Books updateById(long id, long newISBN) {
+		Books books = findById(id);
+//		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.bookId = :update", Books.class);
+//		query.setParameter("update",id );
+//		Books books  = query.getSingleResult();
+		books.setISBN(newISBN);
+
 		return books;
 
 
@@ -59,8 +62,8 @@ public class BooksEJB implements BooksEjbInt {
 
 	
 	@Override
-	public Books findById(Long id) {
-		return em.find(Books.class, id);
+	public Books findById(Long bookId) {
+		return em.find(Books.class, bookId);
 	}
 
 

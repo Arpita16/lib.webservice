@@ -12,7 +12,7 @@ public interface BooksEjbInt {
 
 	List<Books> searchByTitle(String title);
 
-	Books updateById(long ISBN);
+	Books updateById(long id, long ISBN);
 
 	Books findById(Long id);
 

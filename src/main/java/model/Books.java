@@ -14,13 +14,13 @@ import javax.validation.constraints.NotNull;
 public class Books {
 
 	@NotNull
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ISBN;
 	
+	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int bookId;
+	private long bookId;
 	
 	private String title;
 	private String genre;
@@ -41,7 +41,7 @@ public class Books {
 	
 	
 
-public Books(String title, String genre, String author, int shelfNo) {
+	public Books(String title, String genre, String author, int shelfNo) {
 		
 		this.title = title;
 		this.genre = genre;
@@ -110,11 +110,11 @@ public Books(String title, String genre, String author, int shelfNo) {
 //		this.bookCopies = bookCopies;
 //	}
 	
-	public int getbookId() {
+	public long getbookId() {
 		return bookId;
 	}
 
-	public void setbookId(int bookId) {
+	public void setbookId(long bookId) {
 		this.bookId = bookId;
 	}
 
