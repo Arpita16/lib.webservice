@@ -46,8 +46,7 @@ public class LoanRest {
 		@Path("/{loanId}/")
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response searchLoanId(@PathParam("loanId") long loanId) throws URISyntaxException {
-			Loan loan = loanService.findById(loanId);
-			return Response.created(new URI("localhost:8080/webservice/rest/loan/"+loanId)).build();
+			return Response.ok(loanService.findById(loanId)).build();
 		}
 		
 		@PUT

@@ -46,8 +46,7 @@ public class BookRest {
 	@Path("/{title}/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response searchTitle(@PathParam("title") String title) throws URISyntaxException {
-		List<Books> books = booksService.searchByTitle(title);
-		return Response.created(new URI("localhost:8080/webservice/rest/books/"+title)).build();
+		return Response.ok(booksService.searchByTitle(title)).build();
 	}
 	
 	@PUT
