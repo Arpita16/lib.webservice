@@ -53,7 +53,7 @@ public class BookRest {
 	@Path("/{bookId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateId(@PathParam("bookId")int bookId) throws URISyntaxException {
-		List<Books> books = (List<Books>) booksService.updateById(bookId);
+		Response.ok(booksService.updateById(bookId));
 		return Response.created(new URI("localhost:8080/webservice/rest/books/"+bookId)).build();
 		
 	}
