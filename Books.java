@@ -1,4 +1,4 @@
-package model;
+package library.rest;
 
 import java.util.List;
 
@@ -8,10 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
-
 
 @Entity
 public class Books {
@@ -19,43 +20,37 @@ public class Books {
 	@NotNull
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ISBN;
+	long ISBN;
 	
 	@NotNull
-	private int bookId;
+	int bookId;	
 	
-	private String title;
-	private String genre;
-	private String author;
-
-	private int shelfNo;
+	String title;
+	String genre;
+	int shelfNo;
+	
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="loan_ID")
-	private Loan loan;
+	 @JoinColumn(name="Loan_ID")
+	 private Loan loan;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="Member_ID")
-    private List<BookCopy> bookCopies;
-		
+	@JoinColumn(name="Book_Id")
+	private List<Books> books;
+	
+	
+
 	
 	public Books() {}
 	
-	
-
-public Books(long iSBN, int bookId, String title, String genre, String author, int shelfNo, Loan loan,
-			List<BookCopy> bookCopies) {
-		
-		ISBN = iSBN;
-		this.bookId = bookId;
+	public Books(int bookId,String title, String genre, int shelfNo) {
+		super();
+		this.bookId=bookId;
 		this.title = title;
 		this.genre = genre;
-		this.author = author;
 		this.shelfNo = shelfNo;
-		this.loan = loan;
-		this.bookCopies = bookCopies;
+		
 	}
-
 
 
 
@@ -80,8 +75,8 @@ public Books(long iSBN, int bookId, String title, String genre, String author, i
 		return genre;
 	}
 
-	public void setGenre(String gener) {
-		this.genre = gener;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
 	public int getShelfNo() {
@@ -92,31 +87,6 @@ public Books(long iSBN, int bookId, String title, String genre, String author, i
 		this.shelfNo = shelfNo;
 	}
 
-	
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public Loan getLoan() {
-		return loan;
-	}
-
-	public void setLoan(Loan loan) {
-		this.loan = loan;
-	}
-
-	public List<BookCopy> getBookCopies() {
-		return bookCopies;
-	}
-
-	public void setBookCopies(List<BookCopy> bookCopies) {
-		this.bookCopies = bookCopies;
-	}
-	
 	public int getbookId() {
 		return bookId;
 	}
@@ -124,6 +94,7 @@ public Books(long iSBN, int bookId, String title, String genre, String author, i
 	public void setbookId(int bookId) {
 		this.bookId = bookId;
 	}
+
 
 
 

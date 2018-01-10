@@ -27,12 +27,6 @@ public class LoanEJB implements LoanEjbInt {
 	}
 
 
-	@Override
-	public void update(Loan loanItem) {
-		em.merge(loanItem);
-	}
-
-
 
 	@Override
 	public Loan findById(Long id) {
@@ -52,5 +46,10 @@ public class LoanEJB implements LoanEjbInt {
 	@Override
 	public List<Loan> findAll() {
 		return em.createQuery("select l from Loan l", Loan.class).getResultList();
+	}
+
+	@Override
+	public void updateById(long loanId) {
+		em.merge(loanId);
 	}
 }

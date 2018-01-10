@@ -1,4 +1,4 @@
-package resources;
+package library.rest;
 
 
 import java.net.URI;
@@ -18,8 +18,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import dao.MemberEJB;
-import model.Member;
+
 
 @Path("/member")
 @RequestScoped
@@ -31,7 +30,7 @@ public class MemberRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getPerson() {
+	public Response getMember() {
 		return Response.ok(memberService.listMembers()).build();
 	}
 	
@@ -39,7 +38,7 @@ public class MemberRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createMember(Member member) throws URISyntaxException {
 		memberService.createMember(member);
-		return Response.created(new URI("localhost:8080/webservice/rest/member")).build();
+		return Response.created(new URI("localhost:8080/jboss-javaee-webapp/rest/member")).build();
 	}
 	
 	@GET
@@ -47,15 +46,15 @@ public class MemberRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response searchByName(@PathParam("lastName") String lastName) throws URISyntaxException {
 		List<Member> member = memberService.searchByLastName(lastName);
-		return Response.created(new URI("localhost:8080/webservice/rest/member/"+lastName)).build();
+		return Response.created(new URI("localhost:8080/jboss-javaee-webapp/rest/member/"+lastName)).build();
 	}
 	
 	@PUT
 	@Path("/{memberId}/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateById(@PathParam("memberId")int memberId) throws URISyntaxException {
-		Member member = memberService.updateById(memberId);
-		return Response.created(new URI("localhost:8080/webservice/rest/member/"+memberId)).build();
+	public Response updateId(@PathParam("memberId")int memberId) throws URISyntaxException {
+		Member member=memberService.updateById(memberId);
+		return Response.created(new URI("localhost:8080/jboss-javaee-webapp/rest/member/"+memberId)).build();
 		
 	}
 	
