@@ -1,14 +1,11 @@
 package model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +19,7 @@ public class Books {
 	private long ISBN;
 	
 	@NotNull
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookId;
 	
 	private String title;
@@ -34,26 +32,21 @@ public class Books {
 	@JoinColumn(name="loan_ID")
 	private Loan loan;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name="Member_ID")
-    private List<BookCopy> bookCopies;
-		
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="Member_ID")
+//    private List<BookCopy> bookCopies;
+//		
 	
 	public Books() {}
 	
 	
 
-public Books(long iSBN, int bookId, String title, String genre, String author, int shelfNo, Loan loan,
-			List<BookCopy> bookCopies) {
+public Books(String title, String genre, String author, int shelfNo) {
 		
-		ISBN = iSBN;
-		this.bookId = bookId;
 		this.title = title;
 		this.genre = genre;
 		this.author = author;
 		this.shelfNo = shelfNo;
-		this.loan = loan;
-		this.bookCopies = bookCopies;
 	}
 
 
@@ -109,13 +102,13 @@ public Books(long iSBN, int bookId, String title, String genre, String author, i
 		this.loan = loan;
 	}
 
-	public List<BookCopy> getBookCopies() {
-		return bookCopies;
-	}
-
-	public void setBookCopies(List<BookCopy> bookCopies) {
-		this.bookCopies = bookCopies;
-	}
+//	public List<BookCopy> getBookCopies() {
+//		return bookCopies;
+//	}
+//
+//	public void setBookCopies(List<BookCopy> bookCopies) {
+//		this.bookCopies = bookCopies;
+//	}
 	
 	public int getbookId() {
 		return bookId;

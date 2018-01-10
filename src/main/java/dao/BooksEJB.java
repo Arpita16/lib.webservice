@@ -38,8 +38,8 @@ public class BooksEJB implements BooksEjbInt {
 	@Override
 	public List<Books> searchByTitle(String title) {
 
-		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.title= :replace", Books.class);
-		query.setParameter("replace", title);
+		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.title LIKE :replace", Books.class);
+		query.setParameter("replace", title+"%");
 		List<Books> books= query.getResultList();
 		return books;
 
