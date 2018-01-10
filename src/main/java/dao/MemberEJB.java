@@ -59,10 +59,11 @@ public class MemberEJB implements MemberEjbInt {
 	 * @see dao.MemberEjbInt#updateById(int)
 	 */
 	@Override
-	public Member updateById(int memberId) {
+	public Member updateById(int memberId, String address) {
 		 TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.memberId= :update", Member.class);
 	  		query.setParameter("update",memberId );
 		  Member member = query.getSingleResult();
+		  member.setAddress(address);
 		return member;
 		
 		

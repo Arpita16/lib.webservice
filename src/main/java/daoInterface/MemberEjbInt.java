@@ -12,6 +12,6 @@ public interface MemberEjbInt {
 
 	List<Member> searchByLastName(String name);
 
-	Member updateById(int memberId);
+	Member updateById(int memberId, String address);
 
 }

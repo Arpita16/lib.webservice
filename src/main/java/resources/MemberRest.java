@@ -50,12 +50,11 @@ public class MemberRest {
 	}
 	
 	@PUT
-	@Path("/{memberId}/")
+	@Path("/updateaddress/{memberId}/{address}/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateById(@PathParam("memberId")int memberId) throws URISyntaxException {
-		memberService.updateById(memberId);
-		return Response.created(new URI("localhost:8080/webservice/rest/member/"+memberId)).build();
-		
+	public Response updateById(@PathParam("memberId")int memberId, @PathParam("address")String address) throws URISyntaxException {
+		Response.created(new URI("localhost:8080/webservice/rest/member/"+memberId)).build();
+		return Response.ok(memberService.updateById(memberId, address)).build();
 	}
 	
 
