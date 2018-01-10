@@ -18,11 +18,11 @@ public class Member{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int memberId;
 	
-	String firstName;
-	String lastName;
-	String address;
-	long PhoneNo;
-	String email;
+	private String firstName;
+	private String lastName;
+	private String address;
+	private long PhoneNo;
+	private String email;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")

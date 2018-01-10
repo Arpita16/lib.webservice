@@ -17,10 +17,10 @@ public class Loan {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long loanId;
+	private long loanId;
 	
-	Date startdate;
-	Date endDate;
+	private Date startdate;
+	private Date endDate;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="book_ID")
 	private Books book;
