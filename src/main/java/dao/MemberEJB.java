@@ -47,7 +47,7 @@ public class MemberEJB implements MemberEjbInt {
 	@Override
 	public List<Member> searchByLastName(String name) {
 		
-		  TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.lastName= :replace", Member.class);
+		  TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.lastName LIKE :replace", Member.class);
 		  		query.setParameter("replace", name);
 			   List<Member> member = query.getResultList();
 			   return member;

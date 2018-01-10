@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import dao.BooksEJB;
+import daoInterface.BooksEjbInt;
 import model.Books;
 
 
@@ -25,7 +26,7 @@ import model.Books;
 public class BookRest {
 	
 	@Inject
-	BooksEJB booksService;
+	BooksEjbInt booksService;
 	
 	
 	@GET

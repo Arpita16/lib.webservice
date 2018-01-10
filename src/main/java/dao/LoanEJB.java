@@ -5,8 +5,10 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 import daoInterface.LoanEjbInt;
+import model.Books;
 import model.Loan;
 
 @Stateless
@@ -45,7 +47,9 @@ public class LoanEJB implements LoanEjbInt {
 
 	@Override
 	public List<Loan> findAll() {
-		return em.createQuery("select l from Loan l", Loan.class).getResultList();
+		TypedQuery<Loan> query = em.createQuery("select l from Loan l", Loan.class);
+		List<Loan> results = query.getResultList();
+		return results;
 	}
 
 	@Override

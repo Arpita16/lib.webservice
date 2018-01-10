@@ -14,11 +14,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import dao.MemberEJB;
+import daoInterface.MemberEjbInt;
 import model.Member;
 
 @Path("/member")
@@ -26,7 +26,7 @@ import model.Member;
 public class MemberRest {
 	
 	@Inject
-	MemberEJB memberService;
+	MemberEjbInt memberService;
 	
 	
 	@GET
@@ -46,15 +46,14 @@ public class MemberRest {
 	@Path("/{lastName}/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response searchByName(@PathParam("lastName") String lastName) throws URISyntaxException {
-		List<Member> member = memberService.searchByLastName(lastName);
-		return Response.created(new URI("localhost:8080/webservice/rest/member/"+lastName)).build();
+		return Response.ok(memberService.searchByLastName(lastName)).build();
 	}
 	
 	@PUT
 	@Path("/{memberId}/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response updateById(@PathParam("memberId")int memberId) throws URISyntaxException {
-		Member member = memberService.updateById(memberId);
+		memberService.updateById(memberId);
 		return Response.created(new URI("localhost:8080/webservice/rest/member/"+memberId)).build();
 		
 	}

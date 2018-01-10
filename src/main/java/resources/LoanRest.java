@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import dao.LoanEJB;
+import daoInterface.LoanEjbInt;
 import model.Loan;
 
 
@@ -25,7 +26,7 @@ public class LoanRest {
 	
 
 	    @Inject
-		LoanEJB loanService;
+		LoanEjbInt loanService;
 		
 		
 		@GET
