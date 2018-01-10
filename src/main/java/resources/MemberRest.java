@@ -38,16 +38,16 @@ public class MemberRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createMember(Member member) throws URISyntaxException {
 		memberService.createMember(member);
-		return Response.created(new URI("localhost:8080/lib.webservice/rest/member")).build();
+		return Response.created(new URI("localhost:8080/webservice/rest/member")).build();
 	}
 	
-//	@GET
-//	@Path("/lastName")
-//	@Produces(MediaType.APPLICATION_JSON)
-//	public Response searchName(@QueryParam("name") String name) {
-//		List<Member> member = memberService.searchByLastName(name);
-//		return Response.ok(member).build();
-//	}
+	@GET
+	@Path("/lastName")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response searchName(@QueryParam("name") String name) {
+		List<Member> member = memberService.searchByLastName(name);
+		return Response.ok(member).build();
+	}
 	
 	@PUT
 	@Path("/memberId")

@@ -26,7 +26,6 @@ public class Books {
 	private String author;
 
 	int shelfNo;
-	int numberOfcopies;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="loan_ID")
 	private Loan loan;
@@ -40,7 +39,7 @@ public class Books {
 	
 	
 
-public Books(long iSBN, String title, String genre, String author, int shelfNo, int numberOfcopies, Loan loan,
+public Books(long iSBN, String title, String genre, String author, int shelfNo, Loan loan,
 			List<BookCopy> bookCopies) {
 		
 		ISBN = iSBN;
@@ -48,22 +47,12 @@ public Books(long iSBN, String title, String genre, String author, int shelfNo, 
 		this.genre = genre;
 		this.author = author;
 		this.shelfNo = shelfNo;
-		this.numberOfcopies = numberOfcopies;
 		this.loan = loan;
 		this.bookCopies = bookCopies;
 	}
 
 
-
-public int getNumberOfcopies() {
-		return numberOfcopies;
-	}
-
-	public void setNumberOfcopies(int numberOfcopies) {
-		this.numberOfcopies = numberOfcopies;
-	}
-
-	
+		
 	public long getISBN() {
 		return ISBN;
 	}

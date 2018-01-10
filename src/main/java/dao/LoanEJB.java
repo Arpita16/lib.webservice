@@ -28,8 +28,8 @@ public class LoanEJB implements LoanEjbInt {
 
 
 	@Override
-	public void update(Loan loanItem) {
-		em.merge(loanItem);
+	public void update(Long id) {
+		em.merge(id);
 	}
 
 

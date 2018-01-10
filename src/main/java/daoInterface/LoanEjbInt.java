@@ -10,7 +10,7 @@ public interface LoanEjbInt {
 
 	void delete(Loan loanItem);
 
-	void update(Loan loanItem);
+	void update(Long id);
 
 	Loan findById(Long id);
 

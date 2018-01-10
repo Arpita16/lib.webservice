@@ -17,10 +17,11 @@ public class Loan {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int loanId;
+	Long loanId;
+	private int loanPeriod;
 	
-	Date startdate;
-	Date endDate;
+	private Date startdate;
+	private Date endDate;
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="book_ID")
 	private Books book;
@@ -29,20 +30,25 @@ public class Loan {
 	
 	
   public Loan(Date startdate, Date endDate) {
-		super();
+		
 		this.startdate = startdate;
 		this.endDate = endDate;
 	}
+  
+//  public double calcLoanFinedAmount(Date returnDate) {
+//      if (returnDate == null) returnDate = new Date();
+//      return getDeadlineOfReturning().before(returnDate) ? 0.2 * (returnDate.getTime() - getDeadlineOfReturning().getTime()) / 86400000 : 0;
+//  }
 
 
 
 
-	public int getLoanId() {
+	public Long getLoanId() {
 		return loanId;
 	}
 
 
-	public void setLoanId(int loanId) {
+	public void setLoanId(Long loanId) {
 		this.loanId = loanId;
 	}
 

@@ -11,6 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -29,7 +30,7 @@ import model.Books;
 		
 		@GET
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response getPerson() {
+		public Response getbooks() {
 			return Response.ok(booksService.listBooks()).build();
 		}
 		
@@ -41,19 +42,19 @@ import model.Books;
 		}
 		
 		@GET
-		@Path("/lastName")
+		@Path("/{title}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response searchTitle(@QueryParam("title") String title) {
-			List<Books> books = booksService.searchByTitle(title);
-			return Response.ok(books).build();
+		public Response searchTitle(@PathParam("title") String title) throws URISyntaxException {
+			Books books = booksService.searchByTitle(title);
+			return Response.ok(new URI("localhost:8080/webservice/rest/books/"+title)).build();
 		}
 		
 		@PUT
-		@Path("/memberId")
+		@Path("/{booksId}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public Response updateInfo(@QueryParam("ISBN")long ISBN) {
-			Books books =booksService.updateById(ISBN);
-			return Response.ok(books).build();
+		public Response updateId(@PathParam("booksId")long booksId)throws URISyntaxException {
+		Books books = booksService.updateById(booksId);
+			return Response.created(new URI("\"localhost:8080/webservice/rest/books/"+booksId)).build();
 			
 		}
 	}
