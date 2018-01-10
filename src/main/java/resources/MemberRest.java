@@ -12,6 +12,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -30,7 +31,7 @@ public class MemberRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getPerson() {
+	public Response getMember() {
 		return Response.ok(memberService.listMembers()).build();
 	}
 	
@@ -42,19 +43,19 @@ public class MemberRest {
 	}
 	
 	@GET
-	@Path("/lastName")
+	@Path("/{lastName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response searchName(@QueryParam("name") String name) {
-		List<Member> member = memberService.searchByLastName(name);
-		return Response.ok(member).build();
+	public Response searchByLastName(@PathParam("lastName") String lastName) throws URISyntaxException {
+		List<Member> member = memberService.searchByLastName(lastName);
+		return Response.created(new URI("localhost:8080/webservice/rest/member/+lastName")).build();
 	}
 	
 	@PUT
-	@Path("/memberId")
+	@Path("/{memberId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateInfo(@QueryParam("memberId")int memberId) {
+	public Response updateId(@PathParam("memberId")int memberId) throws URISyntaxException {
 		Member member=memberService.updateById(memberId);
-		return Response.ok(member).build();
+		return Response.created(new URI("localhost:8080/webservice/rest/member/+memberId")).build();
 		
 	}
 	
