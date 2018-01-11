@@ -18,9 +18,7 @@ public class MemberEJB implements MemberEjbInt {
 	@Inject
 	EntityManager em;
 	
-	/* (non-Javadoc)
-	 * @see dao.MemberEjbInt#createMember(model.Member)
-	 */
+	
 	@Override
 	public void createMember(Member member) {
 		em.persist(member);
@@ -28,9 +26,6 @@ public class MemberEJB implements MemberEjbInt {
 
 
 
-	/* (non-Javadoc)
-	 * @see dao.MemberEjbInt#listMembers()
-	 */
 	@Override
 	public List<Member> listMembers() {
 		
@@ -41,9 +36,6 @@ public class MemberEJB implements MemberEjbInt {
 
 
 
-	/* (non-Javadoc)
-	 * @see dao.MemberEjbInt#searchByLastName(java.lang.String)
-	 */
 	@Override
 	public List<Member> searchByLastName(String name) {
 		
@@ -55,9 +47,6 @@ public class MemberEJB implements MemberEjbInt {
 	}
 	
 	
-	/* (non-Javadoc)
-	 * @see dao.MemberEjbInt#updateById(int)
-	 */
 	@Override
 	public Member updateById(int memberId, String address) {
 		 TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.memberId= :update", Member.class);

@@ -43,7 +43,7 @@ public class MemberRest {
 	@GET
 	@Path("/{lastName}/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response searchByName(@PathParam("lastName") String lastName) throws URISyntaxException {
+	public Response searchByLastName(@PathParam("lastName") String lastName) throws URISyntaxException {
 		return Response.ok(memberService.searchByLastName(lastName)).build();
 	}
 	
