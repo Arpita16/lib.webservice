@@ -11,19 +11,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
 public class Books {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	long ISBN;
-	
+	long id;
 	String title;
 	String genre;
 	private String author;
+	@NotNull
+	Long isbn;
 
 	int shelfNo;
 	@OneToOne(cascade=CascadeType.ALL)
@@ -39,10 +40,14 @@ public class Books {
 	
 	
 
-public Books(long iSBN, String title, String genre, String author, int shelfNo, Loan loan,
+
+
+
+
+public Books(Long isbn, String title, String genre, String author, int shelfNo, Loan loan,
 			List<BookCopy> bookCopies) {
 		
-		ISBN = iSBN;
+		this.isbn = isbn;
 		this.title = title;
 		this.genre = genre;
 		this.author = author;
@@ -52,14 +57,15 @@ public Books(long iSBN, String title, String genre, String author, int shelfNo, 
 	}
 
 
-		
-	public long getISBN() {
-		return ISBN;
-	}
+public Long getIsbn() {
+	return isbn;
+}
 
-	public void setISBN(long iSBN) {
-		ISBN = iSBN;
-	}
+
+
+public void setIsbn(Long isbn) {
+	this.isbn = isbn;
+}
 
 	public String getTitle() {
 		return title;

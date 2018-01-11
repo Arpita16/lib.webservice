@@ -19,6 +19,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import daoInterface.MemberEjbInt;
+import model.Loan;
 import model.Member;
 
 @Path("/member")
@@ -38,7 +39,7 @@ public class MemberRest {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createMember(Member member) throws URISyntaxException {
-		memberService.createMember(member);
+		 memberService.createMember(member);
 		return Response.created(new URI("localhost:8080/webservice/rest/member")).build();
 	}
 	
@@ -46,16 +47,24 @@ public class MemberRest {
 	@Path("/{lastName}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response searchByLastName(@PathParam("lastName") String lastName) throws URISyntaxException {
-		List<Member> member = memberService.searchByLastName(lastName);
-		return Response.created(new URI("localhost:8080/webservice/rest/member/+lastName")).build();
+		memberService.searchByLastName(lastName);
+		return Response.ok(new URI("localhost:8080/webservice/rest/member/"+lastName)).build();
 	}
+	
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findById(@PathParam("id") Long id) throws URISyntaxException {
+	return Response.ok(memberService.findById(id)).build();
+	}
+
 	
 	@PUT
 	@Path("/{memberId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateId(@PathParam("memberId")int memberId) throws URISyntaxException {
-		Member member=memberService.updateById(memberId);
-		return Response.created(new URI("localhost:8080/webservice/rest/member/+memberId")).build();
+	public Response updateId(@PathParam("memberId")Long memberId) throws URISyntaxException {
+		memberService.updateById(memberId);
+		return Response.created(new URI("localhost:8080/webservice/rest/member/"+memberId)).build();
 		
 	}
 	

@@ -17,13 +17,13 @@ public class LoanEJB implements LoanEjbInt {
 	EntityManager em;
 
 	@Override
-	public void create(Loan loanItem) {
-		em.persist(loanItem);
+	public void create(Loan loan) {
+		em.persist(loan);
 	}
 
 	@Override
-	public void delete(Loan loanItem) {
-		em.remove(loanItem);
+	public void delete(Loan loan) {
+		em.remove(loan);
 	}
 
 

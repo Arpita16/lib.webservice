@@ -54,7 +54,7 @@ import model.Books;
 		@Produces(MediaType.APPLICATION_JSON)
 		public Response updateId(@PathParam("booksId")long booksId)throws URISyntaxException {
 		Books books = booksService.updateById(booksId);
-			return Response.created(new URI("\"localhost:8080/webservice/rest/books/"+booksId)).build();
+			return Response.created(new URI("localhost:8080/webservice/rest/books/"+booksId)).build();
 			
 		}
 	}

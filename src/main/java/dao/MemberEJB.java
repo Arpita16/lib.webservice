@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import daoInterface.MemberEjbInt;
+import model.Loan;
 import model.Member;
 
 
@@ -34,21 +35,29 @@ public class MemberEJB implements MemberEjbInt {
 			   return results;
 	}
 
-
-
 	@Override
-	public List<Member> searchByLastName(String name) {
-		
-		  TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.lastName= :replace", Member.class);
-		  		query.setParameter("replace", name);
-			   List<Member> member = query.getResultList();
-			   return member;
-		
+	public List<Member> searchByLastName(String lastName) {
+		return (List<Member>) em.find(Member.class, lastName);
 	}
-	
+
+//	@Override
+//	public List<Member> searchByLastName(String lastName) {
+//		
+//		  TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.lastName= :replace", Member.class);
+//		  		query.setParameter("replace", lastName);
+//			   List<Member> member = query.getResultList();
+//			   return member;
+//		
+//	}
 	
 	@Override
-	public Member updateById(int memberId) {
+	public Member findById(Long memberid) {
+		return em.find(Member.class, memberid);
+	}
+
+	
+	@Override
+	public Member updateById(Long memberId) {
 		 TypedQuery<Member> query = em.createQuery("SELECT m FROM Member m WHERE m.memberId= :update", Member.class);
 	  		query.setParameter("update",memberId );
 		  Member member = query.getSingleResult();
@@ -57,6 +66,10 @@ public class MemberEJB implements MemberEjbInt {
 		
 		
 	}
+
+
+
+	
 }
 
 

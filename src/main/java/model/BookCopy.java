@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.print.Book;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import model.BookCopyStatus;
 @Entity
 public class BookCopy {
 

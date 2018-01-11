@@ -6,9 +6,9 @@ import model.Loan;
 
 public interface LoanEjbInt {
 
-	void create(Loan loanItem);
+	void create(Loan loan);
 
-	void delete(Loan loanItem);
+	void delete(Loan loan);
 
 	void update(Long id);
 

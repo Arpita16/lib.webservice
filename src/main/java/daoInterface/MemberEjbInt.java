@@ -2,6 +2,7 @@ package daoInterface;
 
 import java.util.List;
 
+import model.Loan;
 import model.Member;
 
 public interface MemberEjbInt {
@@ -12,6 +13,8 @@ public interface MemberEjbInt {
 
 	List<Member> searchByLastName(String name);
 
-	Member updateById(int memberId);
+	Member updateById(Long memberId);
+
+	Member findById(Long memberId);
 
 }
