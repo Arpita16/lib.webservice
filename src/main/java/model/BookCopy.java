@@ -25,6 +25,6 @@ public class BookCopy {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "BookId")
-    private Books book;
+    private Book book;
 
 }

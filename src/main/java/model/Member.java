@@ -26,7 +26,7 @@ public class Member{
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")
-	private List<Books>book;
+	private List<Book>book;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")

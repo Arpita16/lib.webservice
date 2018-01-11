@@ -2,18 +2,18 @@ package daoInterface;
 
 import java.util.List;
 
-import model.Books;
+import model.Book;
 
 public interface BooksEjbInt {
 
-	void createbook(Books book);
+	void createbook(Book book);
 
-	List<Books> listBooks();
+	List<Book> listBooks();
 
-	List<Books> searchByTitle(String title);
+	List<Book> searchByTitle(String title);
 
-	Books updateById(long id, long ISBN);
+	Book updateById(long id, String isbn);
 
-	Books findById(Long id);
+	Book findById(Long id);
 
 }

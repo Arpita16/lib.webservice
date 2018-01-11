@@ -16,10 +16,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import daoInterface.BooksEjbInt;
-import model.Books;
+import model.Book;
 
 
-@Path("/books")
+@Path("/book")
 @RequestScoped
 public class BookRest {
 	
@@ -33,12 +33,20 @@ public class BookRest {
 		return Response.ok(booksService.listBooks()).build();
 	}
 	
+//	@POST
+//	@Path("/new/")
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public Response createBook(Books book) throws URISyntaxException {
+//		booksService.createbook(book);
+//		return Response.created(new URI("localhost:8080/webservice/rest/books")).build();
+//	}
+	
 	@POST
 	@Path("/new/")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response createBooks(Books books) throws URISyntaxException {
-		booksService.createbook(books);
-		return Response.created(new URI("localhost:8080/webservice/rest/books")).build();
+	public Response createbook(Book book) throws URISyntaxException {
+		booksService.createbook(book);
+		return Response.created(new URI("localhost:8080/webservice/rest/book")).build();
 	}
 	
 	@GET
@@ -51,7 +59,7 @@ public class BookRest {
 	@PUT
 	@Path("/updateisbn/{bookId}/{isbn}/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateId(@PathParam("bookId")long bookId, @PathParam("isbn")long isbn) throws URISyntaxException {
+	public Response updateId(@PathParam("bookId")long bookId, @PathParam("isbn")String isbn) throws URISyntaxException {
 //		Response.created(new URI("localhost:8080/webservice/rest/books/"+bookId+"/"+isbn)).build();
 		return Response.ok(booksService.updateById(bookId, isbn)).build();
 		

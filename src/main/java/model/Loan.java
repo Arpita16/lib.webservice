@@ -19,9 +19,10 @@ public class Loan {
 	
 	private Date startdate;
 	private Date endDate;
+	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="book_ID")
-	private Books book;
+	private Book book;
 	
 	public Loan() {}
 	

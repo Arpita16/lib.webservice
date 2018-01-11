@@ -9,56 +9,50 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-public class Books {
+public class Book {
 
-	@NotNull
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ISBN;
-	
+		
 	@Id
 	@NotNull
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long bookId;
 	
+	@NotNull
+	private String isbn;
+
 	private String title;
 	private String genre;
 	private String author;
 
 	private int shelfNo;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="loan_ID")
-	private Loan loan;
-	
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="Member_ID")
-//    private List<BookCopy> bookCopies;
-//		
-	
-	public Books() {}
-	
-	
 
-	public Books(String title, String genre, String author, int shelfNo) {
-		
+	@OneToOne(mappedBy="book" ,  cascade = CascadeType.ALL)
+	private Loan loan;
+
+	// @OneToMany(cascade=CascadeType.ALL)
+	// @JoinColumn(name="Member_ID")
+	// private List<BookCopy> bookCopies;
+	//
+
+	public Book() {
+	}
+
+	public Book(String title, String genre, String author, int shelfNo,String isbn) {
+
 		this.title = title;
 		this.genre = genre;
 		this.author = author;
 		this.shelfNo = shelfNo;
+		this.isbn=isbn;
 	}
 
-
-
-
-	
-	public long getISBN() {
-		return ISBN;
+	public String getIsbn() {
+		return isbn;
 	}
 
-	public void setISBN(long iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public String getTitle() {
@@ -85,7 +79,6 @@ public class Books {
 		this.shelfNo = shelfNo;
 	}
 
-	
 	public String getAuthor() {
 		return author;
 	}
@@ -102,25 +95,26 @@ public class Books {
 		this.loan = loan;
 	}
 
-//	public List<BookCopy> getBookCopies() {
-//		return bookCopies;
-//	}
-//
-//	public void setBookCopies(List<BookCopy> bookCopies) {
-//		this.bookCopies = bookCopies;
-//	}
-	
+	// public List<BookCopy> getBookCopies() {
+	// return bookCopies;
+	// }
+	//
+	// public void setBookCopies(List<BookCopy> bookCopies) {
+	// this.bookCopies = bookCopies;
+	// }
+
 	public long getbookId() {
-		return bookId;
+		return bookId ;
+	}
+//
+//	public void setbookId(long bookId) {
+//		this.bookId = bookId;
+//	}
+
+	
 	}
 
-	public void setbookId(long bookId) {
-		this.bookId = bookId;
-	}
 
 
 
-
-
-}
 
