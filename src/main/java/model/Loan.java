@@ -19,10 +19,16 @@ public class Loan {
 	
 	private Date startdate;
 	private Date endDate;
+
+	/**One Loan can have many books with @OneToMany we represented this**/
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="Book_Id")
+	private List<Books> books;
 	
+	/**One Loan can have only One Member with @OneToOne we represented this**/
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="book_ID")
-	private Book book;
+	@JoinColumn(name="Member_Id")
+	private Member member;
 	
 	public Loan() {}
 	
@@ -36,7 +42,7 @@ public class Loan {
 
 
 
-	public long getLoanId() {
+	public int getLoanId() {
 		return loanId;
 	}
 
@@ -57,14 +63,24 @@ public class Loan {
 
 
 	public Date getEndDate() {
-		return endDate;
+		return startdate.plusMonths(2);
+		
+	}
+
+
+	public List<Books> getBooks() {
+		return books;
+	}
+
+
+	public void setBooks(List<Books> books) {
+		this.books = books;
 	}
 
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
 	
 	
 	
