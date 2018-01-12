@@ -18,14 +18,14 @@ public class MemberEJB implements MemberEjbInt {
 	@Inject
 	EntityManager em;
 	
-	
+	/**simple function to create member**/
 	@Override
 	public void createMember(Member member) {
 		em.persist(member);
 	}
 
 
-
+        /**simple function to get list of members**/
 	@Override
 	public List<Member> listMembers() {
 		
@@ -35,7 +35,7 @@ public class MemberEJB implements MemberEjbInt {
 	}
 
 
-
+         /**simple function to get list of members through last name**/
 	@Override
 	public List<Member> searchByLastName(String name) {
 		
