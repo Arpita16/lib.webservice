@@ -36,11 +36,11 @@ public class LoanRest {
 		}
 		
 		@POST
-		@Path("/{new}/")
+		@Path("/{bookId}/{memberId}/")
 		@Consumes(MediaType.APPLICATION_JSON)
-		public Response createLoan(Loan loan) throws URISyntaxException {
-			loanService.createloan(loan);
-			return Response.created(new URI("localhost:8080/jboss-javaee-webapp/rest/loan")).build();
+		public Response CreateLoan(@PathParam("bookId")  Long bookId, @PathParam("memberId") Long memberId) throws URISyntaxException {
+			loanService.Createloan(bookId,memberId);
+			return Response.created(new URI("localhost:8080/jboss-javaee-webapp/rest/loan/"+bookId+memberId)).build();
 		}
 		
 		@GET

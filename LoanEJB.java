@@ -22,12 +22,40 @@ public class LoanEJB {
 	@Inject
 	EntityManager em;
 	
-	public void createloan(Loan loan) {
-		em.persist(loan);
-	}
+	
+	
+		public Books findBybookId(Long bookId) {
+			return em.find(Books.class, bookId);
+		}	
+		public Member findBymemberId(Long memberId) {
+				return em.find(Member.class, memberId);
+		
+		}
+		
+		public Loan Createloan(Long bookId, Long  memberId) {
+		
+		//Loan loan= n(findBybookId(bookId),findBymemberId(memberId));
+		
+			//Checked by Mattias!!
+			Books foundBook = findBybookId(bookId);
+			Member foundMember = findBymemberId(memberId);
+			Loan loan = new Loan();
+			loan.getBooks().add(foundBook);
+			loan.setMember(foundMember);
+			foundBook.setLoan(loan);
+			foundMember.getLoan().add(loan);
+			em.merge(loan);
+			em.merge(foundBook);
+			em.merge(foundMember);
+			
+			
+			
+			em.persist(loan);
+		Books.bookCopy=Books.bookCopy-1;
+		return loan;
 
-
-
+		}
+		
 	public List<Loan> listLoans() {
 		
 		TypedQuery<Loan> query = em.createQuery("SELECT l FROM Loan l", Loan.class);
@@ -63,7 +91,7 @@ public Loan updateById(long loanId, LocalDate newstartdate) {
 }
 
 
-public Loan findById(Long loanId) {
+public Loan findById(long loanId) {
 	return em.find(Loan.class, loanId);
 }
 		
