@@ -16,14 +16,14 @@ public class BooksEJB implements BooksEjbInt {
 	@Inject
 	EntityManager em;
 
-	
+	/**Simple function to create book**/
 	@Override
 	public void createbook(Book book) {
 		em.persist(book);
 	}
 
 
-
+        /**Function to get list of books*/
 	@Override
 	public List<Book> listBooks() {
 
@@ -34,7 +34,7 @@ public class BooksEJB implements BooksEjbInt {
 
 
 
-	
+	/**Function to get list of books of same title*/
 	@Override
 	public List<Book> searchByTitle(String title) {
 
@@ -45,13 +45,10 @@ public class BooksEJB implements BooksEjbInt {
 
 	}
 
-
+       /**Function to update ISBN number through BookID**/
 	@Override
 	public Book updateById(long id, String newisbn) {
-		Book book = findById(id);
-//		TypedQuery<Books> query = em.createQuery("SELECT b FROM Books b WHERE b.bookId = :update", Books.class);
-//		query.setParameter("update",id );
-//		Books books  = query.getSingleResult();
+		Book book = findById(id);		
 		book.setIsbn(newisbn);
 		em.merge(book);
 		return book;
