@@ -24,27 +24,29 @@ public class Book {
 	private String title;
 	private String genre;
 	private String author;
-
-	private int shelfNo;
+	private int BookCopy;
+	private boolean BookCopyStatus;
+        private int shelfNo;
+	
+	/**Book class is mapped with bidirectional relation with Loan class Which means one book can have only one loan**/
 
 	@OneToOne(mappedBy="book" ,  cascade = CascadeType.ALL)
 	private Loan loan;
 
-	// @OneToMany(cascade=CascadeType.ALL)
-	// @JoinColumn(name="Member_ID")
-	// private List<BookCopy> bookCopies;
-	//
-
+	
+       
 	public Book() {
 	}
 
-	public Book(String title, String genre, String author, int shelfNo,String isbn) {
+	public Book(String title, String genre, String author, int shelfNo,String isbn,int BookCopy,boolean BookCopyStatus) {
 
 		this.title = title;
 		this.genre = genre;
 		this.author = author;
 		this.shelfNo = shelfNo;
 		this.isbn=isbn;
+		this.BookCopy=Bookcopy;
+		this.BookCopyStatus=BookCopyStaus;
 	}
 
 	public String getIsbn() {
@@ -95,21 +97,25 @@ public class Book {
 		this.loan = loan;
 	}
 
-	// public List<BookCopy> getBookCopies() {
-	// return bookCopies;
-	// }
-	//
-	// public void setBookCopies(List<BookCopy> bookCopies) {
-	// this.bookCopies = bookCopies;
-	// }
-
+	
 	public long getbookId() {
 		return bookId ;
 	}
-//
-//	public void setbookId(long bookId) {
-//		this.bookId = bookId;
-//	}
+        public int getBookCopy() {
+		return bookCopy;
+	}
+
+	public void setBookCopy(int bookCopy) {
+		this.bookCopy = bookCopy;
+	}
+
+	public boolean isBookCopyStatus() {
+		return bookCopyStatus;
+	}
+
+	public void setBookCopyStatus(boolean bookCopyStatus) {
+		this.bookCopyStatus = bookCopyStatus;
+	}
 
 	
 	}
