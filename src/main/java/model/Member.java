@@ -24,10 +24,12 @@ public class Member{
 	private long PhoneNo;
 	private String email;
 	
+	/**One Member can have many books created this join just to find out which member is having which book**/
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")
 	private List<Book>book;
 	
+	/**One member can have many loans**/
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="Member_ID")
 	private List<Loan>loan;
@@ -109,7 +111,21 @@ public class Member{
 		PhoneNo = phoneNo;
 	}
 
+       	public List<Books> getBook() {
+		return book;
+	}
 
+	public void setBook(List<Books> book) {
+		this.book = book;
+	}
+
+	public List<Loan> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<Loan> loan) {
+		this.loan = loan;
+	}
 
 
 
