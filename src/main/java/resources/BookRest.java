@@ -33,13 +33,6 @@ public class BookRest {
 		return Response.ok(booksService.listBooks()).build();
 	}
 	
-//	@POST
-//	@Path("/new/")
-//	@Consumes(MediaType.APPLICATION_JSON)
-//	public Response createBook(Books book) throws URISyntaxException {
-//		booksService.createbook(book);
-//		return Response.created(new URI("localhost:8080/webservice/rest/books")).build();
-//	}
 	
 	@POST
 	@Path("/new/")
@@ -59,8 +52,7 @@ public class BookRest {
 	@PUT
 	@Path("/updateisbn/{bookId}/{isbn}/")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateId(@PathParam("bookId")long bookId, @PathParam("isbn")String isbn) throws URISyntaxException {
-//		Response.created(new URI("localhost:8080/webservice/rest/books/"+bookId+"/"+isbn)).build();
+	public Response updateId(@PathParam("bookId")long bookId, @PathParam("isbn")String isbn) throws URISyntaxException {		
 		return Response.ok(booksService.updateById(bookId, isbn)).build();
 		
 	}
