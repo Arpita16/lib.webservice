@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MemberPage</title>
+<style>
+body {
+    background-color: lightblue;
+    font-family: Times New Roman;
+	font-size: 20px;
+}
+
+h1 {
+    color: white;
+    
+}
+
+.container {
+ 
+  width: 100%;
+  margin:80px;
+
+  
+}
+.text {
+    font-size: 14pt;
+    height: 52px;
+    width : 500px;
+}
+   
+   label {
+    width:150px;
+    clear:left;
+    text-align:left;
+    padding-right:5px;
+}
+
+input, label {
+    float:left;
+    margin:10px 10px 10px 0;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+<h1>Sign up</h1>
+<h3>Fill in the following details to create an account:</h3>
+<div class="text">
+<label for ="firstname">First Name</label> 
+<input type ="text" name="firstname" id="firstname"  /><br></br> 
+<label for ="lastname">Last Name</label> 
+<input type ="text" name="lastname" id="lastname" /><br></br> 
+<label for ="adress">Address</label>
+<input type ="text" name="address" id="address" /><br></br> 
+<label for ="city">City</label> 
+<input type ="text" name="city" id="city" /><br></br> 
+<label for ="email">Email</label>
+<input type ="text" name="email" id="email" /><br></br> 
+<label for ="Phonenumber">Phone No.</label> 
+<input type ="text" name="Phonenumber" id="Phonenumber" /></br></br> </br></br>
+
+<button onclick="myFunction()">Submit</button>
+
+<script>
+function myFunction() {
+    alert("1 member created!!! Go to login page to log-in");
+}
+</script>
+
+
+</div>
+</body>
+</html>
